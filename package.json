@@ -1,0 +1,10 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "A simple RESTful API using Node.js and tested with Mocha and Chai",
+  "main": "server.js",
+  "repository": "git@github.com:marks2508/bookstore.git",
+  "author": "Mark S",
+  "license": "MIT",
+  "private": false
+}
