@@ -1,11 +1,11 @@
 const Book = require('../model/book');
 
-function getBooks(req, res) {
-  const query = Book.find({});
-  query.exec((err, books) => {
-    if(err) res.send(err);
-    res.json(books);
-  });
+function getBooks(req, res, next) {
+  Book
+    .find()
+    .exec()
+    .then(books => res.json(books))
+    .catch(next);
 }
 
 function postBook(req, res) {
@@ -19,11 +19,15 @@ function postBook(req, res) {
   });
 }
 
-function getBook(req, res) {
-  Book.findById(req.params.id, (err, book) => {
-    if(err) res.send(err);
-    res.json(book);
-  });
+function getBook(req, res, next) {
+  Book
+    .findById(req.params.id)
+    .exec()
+    .then((book) => {
+      if(!book) return res.notFound();
+      res.json(book);
+    })
+    .catch(next);
 }
 
 function deleteBook(req, res) {

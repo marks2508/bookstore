@@ -6,21 +6,13 @@ const BookSchema = new Schema(
     title: { type: String, required: true },
     author: { type: String, required: true },
     year: { type: Number, require: true },
-    genre: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now }
+    genre: { type: String, required: true }
   },
   {
     versionKey: false
   }
 );
 
-BookSchema.pre('save', next => {
-  now = new Date();
-  if (!createdAt) {
-    this.createdAt = now;
-  }
-  next();
-});
 BookSchema.set('toJSON', {
   getters: true,
   virtuals: true,
