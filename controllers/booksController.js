@@ -1,8 +1,7 @@
-let mongoose = require('mongoose');
-let Book = require('../model/book');
+const Book = require('../model/book');
 
 function getBooks(req, res) {
-  let query = Book.find({});
+  const query = Book.find({});
   query.exec((err, books) => {
     if(err) res.send(err);
     res.json(books);
@@ -44,9 +43,9 @@ function updateBook(req, res) {
 }
 
 module.exports = {
-  getBooks,
-  postBook,
-  getBook,
-  deleteBook,
-  updateBook
+  index: getBooks,
+  create: postBook,
+  show: getBook,
+  delete: deleteBook,
+  update: updateBook
 };

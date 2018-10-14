@@ -7,10 +7,16 @@
   "author": "Mark S",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js",
-    "test": "mocha --timeout 10000"
+    "start": "yarn build && node server",
+    "start:client": "webpack-dev-server",
+    "start:server": "nodemon",
+    "build": "webpack -p",
+    "seed": "node db/seeds",
+    "test": "nyc mocha --exit",
+    "test:coverage": "istanbul cover node_modules/.bin/_mocha"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.15.1",
     "config": "^1.20.1",
     "express": "^4.13.4",
