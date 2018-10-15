@@ -1,0 +1,141 @@
+/* globals api, expect, it, describe, afterEach, beforeEach */
+require('../spec_helper');
+
+const Book = require('../../model/book');
+
+describe('GET /api/books', () => {
+  beforeEach(done => {
+    Book
+      .create({
+        title: 'The hare with amber eyes',
+        author: 'Edmund de Waal',
+        year: 2010,
+        genre: 'Biography'
+      })
+      .then(() => done())
+      .catch(done);
+  });
+
+  it('should return a 200 response', done => {
+    api
+      .get('/api/books')
+      .set('Accept', 'application/json')
+      .expect(200, done);
+  });
+
+  it('should return an array of books', done => {
+    api
+      .get('/api/books')
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        expect(res.body).to.be.an('array');
+        done();
+      });
+  });
+
+  it('should return an array of shoe objects with specific properties', done => {
+    api
+      .get('/api/books')
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        expect(res.body)
+          .to.be.an('array')
+          .and.have.property(0)
+          .and.have.all.keys([
+            'id',
+            'title',
+            'author',
+            'year',
+            'genre'
+          ]);
+        done();
+      });
+  });
+});
+
+describe('POST /api/books', () => {
+  it('should return a 201 response', done => {
+    api
+      .post('/api/books')
+      .set('Accept', 'application/json')
+      .send({
+        title: 'The sugar barons',
+        author: 'Matthew Parker',
+        year: 2005,
+        genre: 'Historical Non-Fiction'
+      })
+      .expect(200 || 201, done);
+  });
+
+  it('should return created book data in response body', done => {
+    api
+      .post('/api/books')
+      .set('Accept', 'application/json')
+      .send({
+        title: 'The sugar barons',
+        author: 'Matthew Parker',
+        year: 2005,
+        genre: 'Historical Non-Fiction'
+      })
+      .end((err, res) => {
+        expect(res.body.book)
+          .to.be.an('object')
+          .and.has.keys([
+            'id',
+            'title',
+            'author',
+            'year',
+            'genre'
+          ]);
+        done();
+      });
+  });
+
+  describe('GET /api/books/:id', () => {
+    let testBook = null;
+
+    beforeEach(done => {
+      Book.create({
+        title: 'The zoo',
+        author: 'Christopher Wilson',
+        year: 2017,
+        genre: 'Satire'
+      })
+        .then(bookData => {
+          testBook = bookData;
+          done();
+        })
+        .catch(done);
+    });
+
+    it('should return a 200 response', done => {
+      api
+        .get(`/api/books/${testBook.id}`)
+        .set('Accept', 'application/json')
+        .expect(200, done);
+    });
+    it('should return book data in response body', done => {
+      api
+        .post('/api/books')
+        .set('Accept', 'application/json')
+        .send({
+          title: 'The zoo',
+          author: 'Christopher Wilson',
+          year: 2017,
+          genre: 'Satire'
+        })
+        .end((err, res) => {
+          expect(res.body)
+            .to.be.an('object');
+          // .and.has.all.keys([
+          //   'id',
+          //   'title',
+          //   'author',
+          //   'year',
+          //   'genre'
+          // ]);
+          done();
+        });
+    });
+  });
+});
