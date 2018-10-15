@@ -3,6 +3,7 @@ require('../spec_helper');
 
 const Book = require('../../model/book');
 
+// Index Route
 describe('GET /api/books', () => {
   beforeEach(done => {
     Book
@@ -33,7 +34,7 @@ describe('GET /api/books', () => {
       });
   });
 
-  it('should return an array of shoe objects with specific properties', done => {
+  it('should return an array of book objects with specific properties', done => {
     api
       .get('/api/books')
       .set('Accept', 'application/json')
@@ -53,6 +54,7 @@ describe('GET /api/books', () => {
   });
 });
 
+// Post Route
 describe('POST /api/books', () => {
   it('should return a 201 response', done => {
     api
@@ -64,7 +66,7 @@ describe('POST /api/books', () => {
         year: 2005,
         genre: 'Historical Non-Fiction'
       })
-      .expect(200 || 201, done);
+      .expect(201, done);
   });
 
   it('should return created book data in response body', done => {
@@ -91,51 +93,111 @@ describe('POST /api/books', () => {
       });
   });
 
-  describe('GET /api/books/:id', () => {
-    let testBook = null;
+  it('should return a 500 response if required field is left blank', done => {
+    api
+      .post('/api/books')
+      .set('Accept', 'application.json')
+      .send({
+        title: 'For whom the bell tolls',
+        author: '',
+        year: 1963,
+        genre: 'fition'
+      })
+      .expect(500, done);
+  });
+});
+// Show Route
+describe('GET /api/books/:id', () => {
+  let testBook = null;
 
-    beforeEach(done => {
-      Book.create({
+  beforeEach(done => {
+    Book.create({
+      title: 'The zoo',
+      author: 'Christopher Wilson',
+      year: 2017,
+      genre: 'Satire'
+    })
+      .then(bookData => {
+        testBook = bookData;
+        done();
+      })
+      .catch(done);
+  });
+
+  it('should return a 200 response', done => {
+    api
+      .get(`/api/books/${testBook.id}`)
+      .set('Accept', 'application/json')
+      .expect(200, done);
+  });
+  it('should return book data in response body', done => {
+    api
+      .post('/api/books')
+      .set('Accept', 'application/json')
+      .send({
         title: 'The zoo',
         author: 'Christopher Wilson',
         year: 2017,
         genre: 'Satire'
       })
-        .then(bookData => {
-          testBook = bookData;
-          done();
-        })
-        .catch(done);
-    });
+      .end((err, res) => {
+        expect(res.body)
+          .to.be.an('object');
+        done();
+      });
+  });
+});
 
-    it('should return a 200 response', done => {
-      api
-        .get(`/api/books/${testBook.id}`)
-        .set('Accept', 'application/json')
-        .expect(200, done);
-    });
-    it('should return book data in response body', done => {
-      api
-        .post('/api/books')
-        .set('Accept', 'application/json')
-        .send({
-          title: 'The zoo',
-          author: 'Christopher Wilson',
-          year: 2017,
-          genre: 'Satire'
-        })
-        .end((err, res) => {
-          expect(res.body)
-            .to.be.an('object');
-          // .and.has.all.keys([
-          //   'id',
-          //   'title',
-          //   'author',
-          //   'year',
-          //   'genre'
-          // ]);
-          done();
-        });
-    });
+// Delete Route
+describe('DELETE /api/books/:id', () => {
+  let testBook = null;
+  beforeEach(done => {
+    Book.create({
+      title: 'The zoo',
+      author: 'Christopher Wilson',
+      year: 2017,
+      genre: 'Satire'
+    })
+      .then(bookData => {
+        testBook = bookData;
+        done();
+      })
+      .catch(done);
+  });
+  it('should return a 204 response', done => {
+    api
+      .delete(`/api/books/${testBook.id}`)
+      .set('Accept', 'application/json')
+      .expect(204, done);
+  });
+});
+
+// Put Route
+describe('PUT /api/books', () => {
+  let testBook = null;
+  beforeEach(done => {
+    Book.create({
+      title: 'The zoo',
+      author: 'Christopher Wilson',
+      year: 2017,
+      genre: 'Satire'
+    })
+      .then(bookData => {
+        testBook = bookData;
+        done();
+      })
+      .catch(done);
+  });
+  it('should return a 201 response', done => {
+    api
+      .put(`/api/books/${testBook.id}`)
+      .set('Accept', 'application.json')
+      .send({
+        title: 'The crazy zoo',
+        author: 'Christopher the bear Wilson',
+        year: 2020,
+        genre: 'Goofball comedy'
+      })
+      .expect(200, done);
   });
 });

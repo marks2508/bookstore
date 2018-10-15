@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">73.68% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>11/22</span>
+        <span class='fraction'>14/19</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>2/8</span>
+        <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">54.55% </span>
+        <span class="strong">73.33% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>6/11</span>
+        <span class='fraction'>11/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">57.89% </span>
+        <span class="strong">73.68% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>11/19</span>
+        <span class='fraction'>14/19</span>
       </div>
     </div>
     <p class="quiet">
@@ -99,27 +99,21 @@
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -128,25 +122,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -158,50 +154,48 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const Book = require('../model/book');
 &nbsp;
-function getBooks(req, res, next) {
+function getBooks(req, res) {
   Book
     .find()
     .exec()
-    .then(books =&gt; res.json(books))
-    .catch(next);
+    .then(books =&gt; res.status(200).json(books))
+    .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(500).json(err))</span>;
 }
 &nbsp;
 function postBook(req, res) {
-  var newBook = new Book(req.body);
-  newBook.save((err, book) =&gt; {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if(err) {
-<span class="cstat-no" title="statement not covered" >      res.send(err);</span>
-    } else {
-      res.json({ message: 'Book successfully added!', book });
-    }
-  });
+  Book
+    .create(req.body)
+    .then(book =&gt; res.status(201).json({ message: 'Book successfully added!', book }))
+    .catch(err =&gt; res.status(500).json(err));
 }
 &nbsp;
-function getBook(req, res, next) {
+function getBook(req, res) {
   Book
     .findById(req.params.id)
     .exec()
     .then((book) =&gt; {
-      <span class="missing-if-branch" title="if path not taken" >I</span>if(!book) <span class="cstat-no" title="statement not covered" >return res.notFound();</span>
-      res.json(book);
+      <span class="missing-if-branch" title="if path not taken" >I</span>if(!book) {
+<span class="cstat-no" title="statement not covered" >        return res.status(404).json({ message: 'Could not find a book with that id', book });</span>
+      }
+      return res.status(200).json(book);
     })
-    .catch(next);
+    .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(500).json(err))</span>;
 }
 &nbsp;
-function <span class="fstat-no" title="function not covered" >deleteBook(</span>req, res) {
-<span class="cstat-no" title="statement not covered" >  Book.remove({ _id: req.params.id}, <span class="fstat-no" title="function not covered" >(e</span>rr, result) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    res.json({ message: 'Book successfully deleted!', result });</span>
-  });
+function deleteBook(req, res) {
+  Book
+    .findByIdAndRemove(req.params.id)
+    .exec()
+    .then(() =&gt; res.status(204).json({ message: 'Book successfully deleted!' }))
+    .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(500).json(err))</span>;
 }
 &nbsp;
-function <span class="fstat-no" title="function not covered" >updateBook(</span>req, res) {
-<span class="cstat-no" title="statement not covered" >  Book.findById({ _id: req.params.id}, <span class="fstat-no" title="function not covered" >(e</span>rr, book) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if(err) <span class="cstat-no" title="statement not covered" >res.send(err);</span></span>
-<span class="cstat-no" title="statement not covered" >    Object.assign(book, req.body).save(<span class="fstat-no" title="function not covered" >(e</span>rr, book) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      if(err) <span class="cstat-no" title="statement not covered" >res.send(err);</span></span>
-<span class="cstat-no" title="statement not covered" >      res.json({ message: 'Book updated!', book});</span>
-    });
-  });
+function updateBook(req, res) {
+  Book
+    .findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+    .exec()
+    .then(book =&gt; res.status(200).json(book))
+    .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(500).json(err))</span>;
 }
 &nbsp;
 module.exports = {
@@ -217,7 +211,7 @@ module.exports = {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 15 2018 09:10:16 GMT+0100 (British Summer Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 15 2018 17:58:47 GMT+0100 (British Summer Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
