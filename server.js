@@ -8,7 +8,7 @@ const { port, dbURI } = require('./config/environment');
 const routes = require('./config/booksRoutes');
 
 mongoose.Promise = require('bluebird');
-mongoose.connect(dbURI, { useNewUrlParser: true });
+mongoose.connect(dbURI, { useMongoClient: true });
 
 app.use(morgan('dev'));
 app.use(express.static(`${__dirname}/public`));
