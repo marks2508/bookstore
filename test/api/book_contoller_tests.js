@@ -106,6 +106,7 @@ describe('POST /api/books', () => {
       .expect(500, done);
   });
 });
+
 // Show Route
 describe('GET /api/books/:id', () => {
   let testBook = null;
@@ -130,6 +131,14 @@ describe('GET /api/books/:id', () => {
       .set('Accept', 'application/json')
       .expect(200, done);
   });
+
+  it('should return a 404 response for wrong book id', done => {
+    api
+      .get('/api/books/5bc4527fe6b2cc21799999zz')
+      .set('Accept', 'application/json')
+      .expect(404, done);
+  });
+
   it('should return book data in response body', done => {
     api
       .post('/api/books')
@@ -146,6 +155,8 @@ describe('GET /api/books/:id', () => {
         done();
       });
   });
+
+
 });
 
 // Delete Route
