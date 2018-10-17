@@ -1,7 +1,8 @@
 import React from 'react';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 
-class BooksShow extends React.Component {
+class BooksIndex extends React.Component {
   state = {
     books: []
   }
@@ -20,7 +21,9 @@ class BooksShow extends React.Component {
         {this.state.books.map(book => {
           return(
             <div key={book.id}>
-              <h1>Title: {book.title}</h1>
+              <Link to={`/books/${book.id}`}>
+                <h1>Title: {book.title}</h1>
+              </Link>
               <h2>Author: {book.author}</h2>
               <h3>Genre: {book.genre}</h3>
               <h4>Year: {book.year}</h4>
@@ -33,4 +36,4 @@ class BooksShow extends React.Component {
   }
 }
 
-export default BooksShow;
+export default BooksIndex;
