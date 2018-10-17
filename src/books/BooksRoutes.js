@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import BooksIndex from '/BooksIndex';
-import BooksShow from '/BooksShow';
-import BooksNew from '/BooksNew';
-import BooksEdit from '/BooksEdit';
+import BooksIndex from './BooksIndex';
+import BooksShow from './BooksShow';
+import BooksNew from './BooksNew';
+import BooksEdit from './BooksEdit';
 
 const BooksRoutes = () => {
   return (

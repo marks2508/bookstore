@@ -38,9 +38,14 @@ function deleteBook(req, res) {
 
 function updateBook(req, res) {
   Book
-    .findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+    .findById(req.params.id)
     .exec()
-    .then(book => res.status(200).json(book))
+    .then((book) => {
+      if(!book) return res.notFound();
+      book = Object.assign(book, req.body);
+      return book.save();
+    })
+    .then(book => res.json(book))
     .catch(err => res.status(500).json(err));
 }
 

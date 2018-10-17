@@ -18,6 +18,10 @@ class BooksIndex extends React.Component {
     return (
       <div>
         <h1>Welcome to the amazing bookstore!</h1>
+        <Link to="/books/new" className="add book"><a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></a>Add a new book</Link>
+
+
+
         {this.state.books.map(book => {
           return(
             <div key={book.id}>

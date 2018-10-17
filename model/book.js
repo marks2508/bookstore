@@ -7,11 +7,7 @@ const BookSchema = new Schema(
     author: { type: String, required: true },
     year: { type: Number, require: true },
     genre: { type: String, required: true }
-  },
-  {
-    versionKey: false
-  }
-);
+  });
 
 BookSchema.set('toJSON', {
   getters: true,

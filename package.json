@@ -15,7 +15,7 @@
     "test": "nyc --reporter=html --reporter=text mocha --exit"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "0.16.2",
     "body-parser": "^1.15.1",
     "config": "^1.20.1",
     "express": "^4.13.4",
