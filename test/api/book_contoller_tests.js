@@ -199,6 +199,7 @@ describe('PUT /api/books', () => {
       })
       .catch(done);
   });
+
   it('should return a 201 response', done => {
     api
       .put(`/api/books/${testBook.id}`)
@@ -210,5 +211,18 @@ describe('PUT /api/books', () => {
         genre: 'Goofball comedy'
       })
       .expect(200, done);
+  });
+
+  it('should return a 500 response if update doesnt contain all required fields', done => {
+    api
+      .put(`/api/books/${testBook.id}`)
+      .set('Accept', 'application.json')
+      .send({
+        title: 'The bad zoo',
+        author: '',
+        year: 2002,
+        genre: 'comic'
+      })
+      .expect(500, done);
   });
 });

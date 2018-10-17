@@ -12,7 +12,8 @@
     "start:server": "nodemon",
     "build": "webpack -p",
     "seed": "node db/seeds",
-    "test": "nyc --reporter=html --reporter=text mocha --exit"
+    "test": "nyc --reporter=html --reporter=text mocha --exit",
+    "test:client": "_mocha test/client/helper.js \"test/client/**/*_test.js\" --coverage"
   },
   "dependencies": {
     "axios": "0.16.2",
@@ -34,7 +35,7 @@
     "supertest": "^3.3.0"
   },
   "devDependencies": {
-    "atob": "^2.1.2",
+    "atob": "2.0.3",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -46,17 +47,16 @@
     "chai-http": "^2.0.1",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-15": "^1.1.1",
-    "enzyme-adapter-react-16": "^1.2.0",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
-    "jsdom": "^12.2.0",
+    "jsdom": "11.6.2",
     "mocha": "^5.2.0",
     "node-sass": "^4.9.3",
     "nyc": "^13.0.1",
     "sass-loader": "^7.1.0",
-    "sinon": "^7.0.0",
+    "sinon": "4.4.2",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
     "webpack": "3.3.0",
