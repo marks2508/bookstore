@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">94.74% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>18/19</span>
+        <span class='fraction'>0/23</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/2</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>17/17</span>
+        <span class='fraction'>0/21</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -70,61 +70,79 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const express = require('express');
-const app = express();
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const express = <span class="cstat-no" title="statement not covered" >require('express');</span>
+const app = <span class="cstat-no" title="statement not covered" >express();</span>
 &nbsp;
-const mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
-mongoose.plugin(require('mongoose-unique-validator'));
+const mongoose = <span class="cstat-no" title="statement not covered" >require('mongoose');</span>
+<span class="cstat-no" title="statement not covered" >mongoose.Promise = require('bluebird');</span>
+<span class="cstat-no" title="statement not covered" >mongoose.plugin(require('mongoose-unique-validator'));</span>
 &nbsp;
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const { port, dbURI } = require('./config/environment');
-const routes = require('./config/booksRoutes');
+const morgan = <span class="cstat-no" title="statement not covered" >require('morgan');</span>
+const bodyParser = <span class="cstat-no" title="statement not covered" >require('body-parser');</span>
+const { port, dbURI } = <span class="cstat-no" title="statement not covered" >require('./config/environment');</span>
+const routes = <span class="cstat-no" title="statement not covered" >require('./config/booksRoutes');</span>
+const customResponses = <span class="cstat-no" title="statement not covered" >require('./lib/customResponses');</span>
+const errorHandler = <span class="cstat-no" title="statement not covered" >require('./lib/errorHandler');</span>
 &nbsp;
-mongoose.connect(dbURI, { useMongoClient: true });
+<span class="cstat-no" title="statement not covered" >mongoose.connect(dbURI, { useMongoClient: true });</span>
 &nbsp;
-app.use(morgan('dev'));
-app.use(express.static(`${__dirname}/public`));
-app.use(bodyParser.json());
+<span class="cstat-no" title="statement not covered" >app.use(morgan('dev'));</span>
+<span class="cstat-no" title="statement not covered" >app.use(express.static(`${__dirname}/public`));</span>
+<span class="cstat-no" title="statement not covered" >app.use(bodyParser.json());</span>
 &nbsp;
-app.use('/api', routes);
-app.get('/*', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; <span class="cstat-no" title="statement not covered" >res.sendFile(`${__dirname}/public/index.html`))</span>;
+<span class="cstat-no" title="statement not covered" >app.use(customResponses);</span>
 &nbsp;
-app.listen(port, () =&gt; console.log(`Express is listening on port ${port}`));
+<span class="cstat-no" title="statement not covered" >app.use('/api', routes);</span>
+<span class="cstat-no" title="statement not covered" >app.get('/*', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; <span class="cstat-no" title="statement not covered" >res.sendFile(`${__dirname}/public/index.html`))</span>;</span>
 &nbsp;
-module.exports = app;
+<span class="cstat-no" title="statement not covered" >app.use(errorHandler);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >app.listen(port, <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >console.log(`Express is listening on port ${port}`))</span>;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >module.exports = app;</span>
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 17 2018 10:58:35 GMT+0100 (BST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 18 2018 12:01:48 GMT+0100 (BST)
 </div>
 </div>
 <script src="../prettify.js"></script>
