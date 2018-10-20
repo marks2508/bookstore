@@ -2,13 +2,15 @@ import React from 'react';
 
 import BackButton from '../utility/BackButton';
 
-function BooksForm({ history, handleSubmit, handleChange, book }) {
+function BooksForm({ history, handleSubmit, handleChange, book, errors }) {
+
+  const formInvalid = Object.keys(errors).some(key => errors[key]);
 
   return (
     <div className="row">
       <div className="page-banner col-md-12">
       </div>
-      <form onSubmit={handleSubmit} className="col-md-6">
+      <form onSubmit={handleSubmit} className="NewBook">
         <div className="form-group">
           <label htmlFor="title">Title</label>
           <input
@@ -19,6 +21,7 @@ function BooksForm({ history, handleSubmit, handleChange, book }) {
             value={book.title}
             onChange={handleChange}
           />
+          {errors.title && <p className="error"><small>{errors.title}</small></p>}
         </div>
         <div className="form-group">
           <label htmlFor="author">Author</label>
@@ -30,6 +33,7 @@ function BooksForm({ history, handleSubmit, handleChange, book }) {
             value={book.author}
             onChange={handleChange}
           />
+          {errors.author && <p className="error"><small>{errors.author}</small></p>}
         </div>
         <div className="form-group">
           <label htmlFor="year">Year</label>
@@ -41,6 +45,7 @@ function BooksForm({ history, handleSubmit, handleChange, book }) {
             value={book.year}
             onChange={handleChange}
           />
+          {errors.year && <p className="error"><small>{errors.year}</small></p>}
         </div>
         <div className="form-group">
           <label htmlFor="genre">Genre</label>
@@ -52,9 +57,9 @@ function BooksForm({ history, handleSubmit, handleChange, book }) {
             value={book.genre}
             onChange={handleChange}
           />
+          {errors.genre && <p className="error"><small>{errors.genre}</small></p>}
         </div>
-        <button className="btn waves-effect waves-light" type="submit" name="action">Submit
-          <i className="material-icons right">send</i>
+        <button className="btn waves-effect waves-light" disabled={formInvalid}><i className="material-icons right">send</i>
         </button>
         <div>
           <BackButton history={history} />

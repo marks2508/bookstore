@@ -34,6 +34,7 @@ describe('GET /api/books', () => {
       });
   });
 
+
   it('should return an array of book objects with specific properties', done => {
     api
       .get('/api/books')
@@ -132,11 +133,11 @@ describe('GET /api/books/:id', () => {
       .expect(200, done);
   });
 
-  it('should return a 404 response for wrong book id', done => {
+  it('should return a 500 response for wrong book id', done => {
     api
       .get('/api/books/5bc4527fe6b2cc21799999zz')
       .set('Accept', 'application/json')
-      .expect(404, done);
+      .expect(500, done);
   });
 
   it('should return book data in response body', done => {
@@ -181,6 +182,12 @@ describe('DELETE /api/books/:id', () => {
       .set('Accept', 'application/json')
       .expect(204, done);
   });
+  it('should return 500 repsonse if no book', done => {
+    api
+      .delete('/api/books/2938483')
+      .set('Accept', 'application/json')
+      .expect(500, done);
+  });
 });
 
 // Put Route
@@ -224,5 +231,17 @@ describe('PUT /api/books', () => {
         genre: 'comic'
       })
       .expect(500, done);
+  });
+  it('should return res.notFound if not book is sent', done => {
+    api
+      .put('/api/books/')
+      .set('Accept', 'application.json')
+      .send({
+        title: '',
+        author: '',
+        year: '',
+        genre: ''
+      })
+      .expect(404, done);
   });
 });

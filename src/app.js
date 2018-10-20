@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 import BooksRoutes from './books/BooksRoutes';
 
+import './scss/style.scss';
+
 class App extends React.Component {
   render() {
     return (
