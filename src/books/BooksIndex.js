@@ -2,6 +2,18 @@ import React from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 
+
+const cardStyle = {
+  width: '100%',
+  maxHeight: '294px',
+  height: '100%',
+  padding: '20px'
+};
+
+const cardContent = {
+  height: '10em'
+};
+
 class BooksIndex extends React.Component {
   state = {
     books: []
@@ -14,18 +26,20 @@ class BooksIndex extends React.Component {
       .catch(err => console.log(err));
   }
 
+
+
   render() {
     return (
       <div>
         <div className="row">
           {this.state.books.map(book => {
             return (
-              <div key={book.id} className="col 2">
+              <div key={book.id} className="col s2">
                 <div className="card">
-                  <div className="card-image">
-                    <img src={book.image} />
+                  <div className="card-image" >
+                    <img src={book.image} style={cardStyle}/>
                   </div>
-                  <div className="card-content">
+                  <div className="card-content" style={cardContent}>
                     <h6>{book.title}</h6>
                     <p>{book.author}</p>
                     <p>{book.genre}</p>
