@@ -9,15 +9,17 @@ import Navbar from './utility/Navbar';
 
 import './scss/style.scss';
 
+const homepage = {
+  textAlign: 'center'
+};
+
 class App extends React.Component {
   render() {
     return (
       <Router>
         <div>
           <header>
-            <Navbar />
-            <h1><Link to="/">Bookstore</Link></h1>
-            <h2>For the bookworms of this world</h2>
+            <Navbar />  
           </header>
           <main>
             <BooksRoutes />

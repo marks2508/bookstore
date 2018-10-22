@@ -4,14 +4,16 @@ import { Link } from 'react-router-dom';
 
 
 const cardStyle = {
-  width: '100%',
+  width: 'auto',
   maxHeight: '294px',
   height: '100%',
-  padding: '20px'
+  padding: '2px'
 };
 
+
 const cardContent = {
-  height: '10em'
+  height: '10em',
+  fontFamily: 'Niramit'
 };
 
 class BooksIndex extends React.Component {
@@ -25,8 +27,6 @@ class BooksIndex extends React.Component {
       .then(res => this.setState({books: res.data}))
       .catch(err => console.log(err));
   }
-
-
 
   render() {
     return (
@@ -42,6 +42,7 @@ class BooksIndex extends React.Component {
                   <div className="card-content" style={cardContent}>
                     <h6>{book.title}</h6>
                     <p>{book.author}</p>
+                    <hr />
                     <p>{book.genre}</p>
                   </div>
                   <div className="card-action">
