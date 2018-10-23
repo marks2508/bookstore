@@ -18,14 +18,14 @@ const navbarLogoStyle = {
   display: 'block'
 };
 const navbarIconStyle = {
-  color: 'blue',
+  color: 'mediumblue',
   marginTop: '-100px',
   float: 'right',
   padding: '40px'
 };
 const navbarAuthStyle = {
   fontFamily: 'Niramit',
-  color: 'blue',
+  color: 'mediumblue',
   marginTop: '-100px',
   float: 'left',
   padding: '40px'
@@ -36,7 +36,7 @@ const clearfix = {
 };
 const navbarLine = {
   height: '10px',
-  backgroundColor: 'midnightblue'
+  backgroundColor: 'mediumblue'
 };
 
 const Navbar = ({ history }) => {
