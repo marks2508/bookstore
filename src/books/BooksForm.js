@@ -4,13 +4,14 @@ import BackButton from '../utility/BackButton';
 
 function BooksForm({ history, handleSubmit, handleChange, book, errors }) {
 
-  const formInvalid = Object.keys(errors).some(key => errors[key]);
+  // const formInvalid = Object.keys(errors).some(key => errors[key]);
 
   return (
     <div className="row">
       <div className="page-banner col-md-12">
+        <BackButton history={history} />
       </div>
-      <form onSubmit={handleSubmit} className="NewBook">
+      <form onSubmit={handleSubmit} className="col-md-6">
         <div className="form-group">
           <label htmlFor="title">Title</label>
           <input
@@ -21,7 +22,7 @@ function BooksForm({ history, handleSubmit, handleChange, book, errors }) {
             value={book.title}
             onChange={handleChange}
           />
-          {errors.title && <p className="error"><small>{errors.title}</small></p>}
+          {/* {errors.title && <p className="error"><small>{errors.title}</small></p>} */}
         </div>
         <div className="form-group">
           <label htmlFor="author">Author</label>
@@ -33,7 +34,7 @@ function BooksForm({ history, handleSubmit, handleChange, book, errors }) {
             value={book.author}
             onChange={handleChange}
           />
-          {errors.author && <p className="error"><small>{errors.author}</small></p>}
+          {/* {errors.author && <p className="error"><small>{errors.author}</small></p>} */}
         </div>
         <div className="form-group">
           <label htmlFor="year">Year</label>
@@ -45,7 +46,7 @@ function BooksForm({ history, handleSubmit, handleChange, book, errors }) {
             value={book.year}
             onChange={handleChange}
           />
-          {errors.year && <p className="error"><small>{errors.year}</small></p>}
+          {/* {errors.year && <p className="error"><small>{errors.year}</small></p>} */}
         </div>
         <div className="form-group">
           <label htmlFor="genre">Genre</label>
@@ -57,12 +58,10 @@ function BooksForm({ history, handleSubmit, handleChange, book, errors }) {
             value={book.genre}
             onChange={handleChange}
           />
-          {errors.genre && <p className="error"><small>{errors.genre}</small></p>}
+          {/* {errors.genre && <p className="error"><small>{errors.genre}</small></p>} */}
         </div>
-        <button className="btn waves-effect waves-light" disabled={formInvalid}><i className="material-icons right">send</i>
-        </button>
         <div>
-          <BackButton history={history} />
+          <button className="btn waves-effect waves-light">Save</button>
         </div>
       </form>
     </div>

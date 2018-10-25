@@ -3,6 +3,8 @@ import Axios from 'axios';
 
 import BooksForm from './BooksForm';
 
+import Auth from '../lib/auth';
+
 class BooksEdit extends React.Component {
   state = {
     book: {
@@ -29,7 +31,7 @@ class BooksEdit extends React.Component {
     e.preventDefault();
 
     Axios
-      .put(`/api/books/${this.props.match.params.id}`, this.state.book)
+      .put(`/api/books/${this.props.match.params.id}`, this.state.book, { headers: { 'Authorization': `Bearer ${Auth.getToken()}`}})
       .then(res => this.props.history.push(`/books/${res.data.id}`))
       .catch(err => console.log(err));
   }

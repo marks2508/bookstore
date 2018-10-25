@@ -25,6 +25,7 @@ const navbarIconStyle = {
 };
 const navbarAuthStyle = {
   fontFamily: 'Niramit',
+  fontSize: '20px',
   color: 'mediumblue',
   marginTop: '-100px',
   float: 'left',
@@ -49,7 +50,7 @@ const Navbar = ({ history }) => {
   return(
     <div style={navbarStyle}>
       <ul style={clearfix}>
-        <li><img style={navbarLogoStyle}  src="../assets/Logo.png" /></li>
+        <a href="/"><img style={navbarLogoStyle}  src="../assets/Logo.png" /></a>
         <li><a href="sass.html"><i style={navbarIconStyle} className="material-icons">search</i></a></li>
         <li><a href="badges.html"><i style={navbarIconStyle} className="material-icons">view_module</i></a></li>
         <li><a href="collapsible.html"><i style={navbarIconStyle} className="material-icons">refresh</i></a></li>
@@ -58,7 +59,7 @@ const Navbar = ({ history }) => {
         {' '}
         { !Auth.isAuthenticated() && <li><Link to="/register" style={navbarAuthStyle} className="standard-button">Register</Link></li> }
         {' '}
-        { Auth.isAuthenticated() && <a href="#" className="standard-button" onClick={logout}>Logout</a> }
+        { Auth.isAuthenticated() && <a href="#" style={navbarAuthStyle} className="standard-button" onClick={logout}>Logout</a> }
       </ul>
       <hr style={navbarLine}/>
     </div>
