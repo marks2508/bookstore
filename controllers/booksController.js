@@ -1,10 +1,19 @@
 const Book = require('../model/book');
+const NytBooks = require('../model/NytBooks');
 
 function getBooks(req, res) {
   Book
     .find()
     .exec()
     .then(books => res.status(200).json(books))
+    .catch(err => res.status(500).json(err));
+}
+
+function getNytBooks(req, res) {
+  NytBooks
+    .find()
+    .exec()    
+    .then(titles => res.status(200).json(titles))
     .catch(err => res.status(500).json(err));
 }
 
@@ -51,6 +60,7 @@ function updateBook(req, res) {
 
 module.exports = {
   index: getBooks,
+  nytIndex: getNytBooks,
   create: postBook,
   show: getBook,
   delete: deleteBook,

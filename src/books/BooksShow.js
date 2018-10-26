@@ -4,6 +4,10 @@ import Axios from 'axios';
 
 import BackButton from '../utility/BackButton';
 
+const buttonStyles = {
+  display: 'inline-block'
+};
+
 class BooksShow extends React.Component {
   state = {
     book: {}
@@ -26,17 +30,25 @@ class BooksShow extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Title: {this.state.book.title}</h1>
-        <h2>Author: {this.state.book.author}</h2>
-        <h3>Year: {this.state.book.year}</h3>
-        <h4>Genre: {this.state.book.genre}</h4>
+      <div className="container">
+        <div className="row">
+          <div className="col s4">
+          <img src={this.state.book.image} />
+
+        </div>
+        <div className="col s6">
+        <h1>{this.state.book.title}</h1>
+        <h2>{this.state.book.author}</h2>
+        <h3>{this.state.book.year}</h3>
+        <h4>{this.state.book.genre}</h4>
         <Link to={`/books/${this.state.book.id}/edit`}>
           <i className="material-icons">edit</i>
         </Link>
         <BackButton history={this.props.history} />
-        <button className="delete-button" onClick={this.deleteBook}><i className="material-icons">delete_forever</i></button>
+        <a><i onClick={this.deleteBook} className="material-icons">delete_forever</i></a>
       </div>
+    </div>
+  </div>
     );
   }
 }

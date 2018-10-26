@@ -6,6 +6,9 @@ router.route('/books')
   .get(books.index)
   .post(books.create);
 
+router.route('/nytimes')
+  .get(books.nytIndex);
+
 router.route('/books/:id')
   .get(books.show)
   .put(books.update)
