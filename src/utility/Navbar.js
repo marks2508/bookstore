@@ -58,9 +58,15 @@ class Navbar extends React.Component {
     e.preventDefault();
     console.log('search button clicked');
     console.log('before: ', this.state);
-    this.setState({
-      showSearch: true
-    });
+    if (this.state.showSearch === false) {
+      this.setState({
+        showSearch: true
+      });
+    } else {
+      this.setState({
+        showSearch: false
+      });
+    }
     console.log('after: ', this.state.showSearch);
 
   }
@@ -72,9 +78,8 @@ class Navbar extends React.Component {
           <a href="/"><img style={navbarLogoStyle}  src="../assets/Logo.png" /></a>
           <li><a href="#" onClick={this.showSearchBar}><i style={navbarIconStyle} className="material-icons">search</i></a></li>
           {this.state.showSearch ? <ProductGrid /> : null}
+          { Auth.isAuthenticated() && <li><Link to="/books/new" style={navbarIconStyle}>Add a book</Link></li>}
           { Auth.isAuthenticated() && <li><Link to="/nytimes" style={navbarAuthStyle}>NY Times Bestsellers</Link></li>}
-          <li><a href="collapsible.html"><i style={navbarIconStyle} className="material-icons">refresh</i></a></li>
-          <li><a href="mobile.html"><i style={navbarIconStyle} className="material-icons">more_vert</i></a></li>
           { !Auth.isAuthenticated() && <li><Link to="/login" style={navbarAuthStyle} className="standard-button">Login</Link></li>}
           {' '}
           { !Auth.isAuthenticated() && <li><Link to="/register" style={navbarAuthStyle} className="standard-button">Register</Link></li> }

@@ -7,7 +7,8 @@ const BookSchema = new Schema(
     author: { type: String, required: 'Please specify a author' },
     year: { type: Number, require: 'Please specify a year' },
     genre: { type: String, required: 'Please specify a genre' },
-    image: {type: String }
+    isbn: { type: Number, required: 'Please enter the ISBN number' },
+    image: { type: String }
   });
 
 BookSchema.set('toJSON', {

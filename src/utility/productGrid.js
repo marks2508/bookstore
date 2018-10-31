@@ -39,9 +39,9 @@ class ProductGrid extends React.Component {
           handleSort={this.handleSort}
           handleSearch={this.handleSearch}
         />
-        <Row>
+        {/* <Row>
           {products.map((product, i ) => <Product key={i} {...product} />)}
-        </Row>
+        </Row> */}
       </Grid>
     );
   }

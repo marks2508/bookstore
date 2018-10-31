@@ -9,7 +9,9 @@ class BooksNew extends React.Component {
       title: '',
       author: '',
       year: '',
-      genre: ''
+      genre: '',
+      isbn: '',
+      image: ''
     },
     errors: {}
   };
@@ -22,7 +24,7 @@ class BooksNew extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log(this.state.book);
     Axios
       .post('/api/books', this.state.book)
       .then(() => this.props.history.push('/'))

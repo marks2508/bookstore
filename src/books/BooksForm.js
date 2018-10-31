@@ -2,7 +2,7 @@ import React from 'react';
 
 import BackButton from '../utility/BackButton';
 
-function BooksForm({ history, handleSubmit, handleChange, book, errors }) {
+function BooksForm({ history, handleSubmit, handleChange, book }) {
 
   // const formInvalid = Object.keys(errors).some(key => errors[key]);
 
@@ -59,6 +59,28 @@ function BooksForm({ history, handleSubmit, handleChange, book, errors }) {
             onChange={handleChange}
           />
           {/* {errors.genre && <p className="error"><small>{errors.genre}</small></p>} */}
+        </div>
+        <div>
+          <label htmlFor="isbn">ISBN</label>
+          <input
+            type="text"
+            className="form-control"
+            id="isbn"
+            name="isbn"
+            value={book.isbn}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="image">Image</label>
+          <input
+            type="text"
+            className="form-control"
+            id="image"
+            name="image"
+            value={book.image}
+            onChange={handleChange}
+          />
         </div>
         <div>
           <button className="btn waves-effect waves-light">Save</button>
