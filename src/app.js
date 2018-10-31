@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
+import ProductGrid from './utility/ProductGrid';
 import BooksRoutes from './books/BooksRoutes';
 import Login from './auth/login';
 import Register from './auth/register';
@@ -19,7 +20,8 @@ class App extends React.Component {
       <Router>
         <div>
           <header>
-            <Navbar />  
+            <Navbar />
+
           </header>
           <main>
             <BooksRoutes />

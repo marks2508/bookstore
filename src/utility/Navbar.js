@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-
+import ProductGrid from './productGrid';
+import SearchBar from './SearchBar';
 import Auth from '../lib/Auth';
 
 const navbarStyle = {
@@ -40,30 +41,50 @@ const navbarLine = {
   backgroundColor: 'mediumblue'
 };
 
-const Navbar = ({ history }) => {
-  function logout(e) {
-    e.preventDefault();
-    Auth.logout();
-    history.push('/');
+class Navbar extends React.Component {
+
+  state = {
+    showSearch: false
   }
 
-  return(
-    <div style={navbarStyle}>
-      <ul style={clearfix}>
-        <a href="/"><img style={navbarLogoStyle}  src="../assets/Logo.png" /></a>
-        <li><a href="sass.html"><i style={navbarIconStyle} className="material-icons">search</i></a></li>
-        <li><a href="badges.html"><i style={navbarIconStyle} className="material-icons">view_module</i></a></li>
-        <li><a href="collapsible.html"><i style={navbarIconStyle} className="material-icons">refresh</i></a></li>
-        <li><a href="mobile.html"><i style={navbarIconStyle} className="material-icons">more_vert</i></a></li>
-        { !Auth.isAuthenticated() && <li><Link to="/login" style={navbarAuthStyle} className="standard-button">Login</Link></li>}
-        {' '}
-        { !Auth.isAuthenticated() && <li><Link to="/register" style={navbarAuthStyle} className="standard-button">Register</Link></li> }
-        {' '}
-        { Auth.isAuthenticated() && <a href="#" style={navbarAuthStyle} className="standard-button" onClick={logout}>Logout</a> }
-      </ul>
-      <hr style={navbarLine}/>
-    </div>
-  );
-};
+
+  logout = e => {
+    e.preventDefault();
+    Auth.logout();
+    this.props.history.push('/');
+  }
+
+  showSearchBar = e => {
+    e.preventDefault();
+    console.log('search button clicked');
+    console.log('before: ', this.state);
+    this.setState({
+      showSearch: true
+    });
+    console.log('after: ', this.state.showSearch);
+
+  }
+
+  render() {
+    return(
+      <div style={navbarStyle}>
+        <ul style={clearfix}>
+          <a href="/"><img style={navbarLogoStyle}  src="../assets/Logo.png" /></a>
+          <li><a href="#" onClick={this.showSearchBar}><i style={navbarIconStyle} className="material-icons">search</i></a></li>
+          {this.state.showSearch ? <ProductGrid /> : null}
+          { Auth.isAuthenticated() && <li><Link to="/nytimes" style={navbarAuthStyle}>NY Times Bestsellers</Link></li>}
+          <li><a href="collapsible.html"><i style={navbarIconStyle} className="material-icons">refresh</i></a></li>
+          <li><a href="mobile.html"><i style={navbarIconStyle} className="material-icons">more_vert</i></a></li>
+          { !Auth.isAuthenticated() && <li><Link to="/login" style={navbarAuthStyle} className="standard-button">Login</Link></li>}
+          {' '}
+          { !Auth.isAuthenticated() && <li><Link to="/register" style={navbarAuthStyle} className="standard-button">Register</Link></li> }
+          {' '}
+          { Auth.isAuthenticated() && <a href="#" style={navbarAuthStyle} className="standard-button" onClick={this.logout}>Logout</a> }
+        </ul>
+        <hr style={navbarLine}/>
+      </div>
+    );
+  }
+}
 
 export default withRouter(Navbar);

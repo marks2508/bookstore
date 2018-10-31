@@ -29,15 +29,6 @@ class BooksIndex extends React.Component {
       .catch(err => console.log(err));
   }
 
-
-
-  // componentDidMount() {
-  //   Axios
-  //     .get('https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=e997f05814364df0abe920851e28e713')
-  //     .then(res => this.setState({books: res.data}))
-  //     .catch(err => console.log(err));
-  // }
-
   render() {
     return (
       <div>

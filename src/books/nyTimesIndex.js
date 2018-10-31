@@ -13,7 +13,8 @@ class NyTimesIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      date: new Date().toLocaleDateString()
     };
   }
 
@@ -29,9 +30,11 @@ class NyTimesIndex extends React.Component {
   }
 
   render() {
-    
+
     return (
       <div className="container">
+        <h1>The top 20 New York Times Bestsellers</h1>
+        <h3>as of {this.state.date}</h3>
         <div className="row">
           {this.state.books.map(book => {
             return (
@@ -39,7 +42,7 @@ class NyTimesIndex extends React.Component {
                 <div className="card">
                   <div style={cardContentStyle} className="card-content">
                     <br />
-                    <h6>{book.title}</h6>
+                    <p>{book.title}</p>
                     <hr />
                     <p>{book.author}</p>
                     <p>{book.isbns.isbn13}</p>
