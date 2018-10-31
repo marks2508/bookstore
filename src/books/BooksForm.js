@@ -71,17 +71,7 @@ function BooksForm({ history, handleSubmit, handleChange, book }) {
             onChange={handleChange}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="image">Image</label>
-          <input
-            type="text"
-            className="form-control"
-            id="image"
-            name="image"
-            value={book.image}
-            onChange={handleChange}
-          />
-        </div>
+
         <div>
           <button className="btn waves-effect waves-light">Save</button>
         </div>

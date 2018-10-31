@@ -33,22 +33,21 @@ class BooksShow extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col s4">
-          <img src={this.state.book.image} />
-
+            <img src={`http://covers.openlibrary.org/b/isbn/${this.state.book.isbn}-L.jpg`} />
+          </div>
+          <div className="col s6">
+            <h1>{this.state.book.title}</h1>
+            <h2>{this.state.book.author}</h2>
+            <h3>{this.state.book.year}</h3>
+            <h4>{this.state.book.genre}</h4>
+            <Link to={`/books/${this.state.book.id}/edit`}>
+              <i className="material-icons">edit</i>
+            </Link>
+            <BackButton history={this.props.history} />
+            <a><i onClick={this.deleteBook} className="material-icons">delete_forever</i></a>
+          </div>
         </div>
-        <div className="col s6">
-        <h1>{this.state.book.title}</h1>
-        <h2>{this.state.book.author}</h2>
-        <h3>{this.state.book.year}</h3>
-        <h4>{this.state.book.genre}</h4>
-        <Link to={`/books/${this.state.book.id}/edit`}>
-          <i className="material-icons">edit</i>
-        </Link>
-        <BackButton history={this.props.history} />
-        <a><i onClick={this.deleteBook} className="material-icons">delete_forever</i></a>
       </div>
-    </div>
-  </div>
     );
   }
 }

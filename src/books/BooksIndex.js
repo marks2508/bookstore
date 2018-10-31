@@ -18,8 +18,7 @@ const cardContent = {
 
 class BooksIndex extends React.Component {
   state = {
-    books: [],
-    list: []
+    books: []
   }
 
   componentWillMount() {
@@ -38,7 +37,7 @@ class BooksIndex extends React.Component {
               <div key={book.id} className="col s2">
                 <div className="card">
                   <div className="card-image" >
-                    <img src={book.image} style={cardStyle}/>
+                    <img src={`http://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`} style={cardStyle}/>
                   </div>
                   <div className="card-content" style={cardContent}>
                     <h6>{book.title}</h6>
