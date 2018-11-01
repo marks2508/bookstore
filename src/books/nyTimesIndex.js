@@ -23,13 +23,12 @@ class NyTimesIndex extends React.Component {
       .then(res => {
         console.log('Data: ', res.data.results);
         this.setState({ books: res.data.results });
-        console.log('State: ', this.state.books);
+        console.log('State: ', this.state.books[0].isbns[0].isbn10);
       })
       .catch(err => console.log('Error: ', err));
   }
 
   render() {
-
     return (
       <div className="container">
         <h1>The top 20 New York Times Bestsellers</h1>
@@ -37,14 +36,18 @@ class NyTimesIndex extends React.Component {
         <div className="row">
           {this.state.books.map(book => {
             return (
-              <div key={book.Number} className="col s3">
+              <div key={book.key} className="col s3">
                 <div className="card">
                   <div style={cardContentStyle} className="card-content">
                     <br />
                     <p>{book.title}</p>
                     <hr />
                     <p>{book.author}</p>
-                    <p>{book.isbns.isbn13}</p>
+                    {book.isbns.map((isbn, i) => (
+                      <div key={i}>
+                        <img src={`http://covers.openlibrary.org/b/isbn/${isbn.isbn10}-M.jpg`}/>
+                      </div>
+                    ))}
                     <hr />
                     <a href={'https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=' + book.title}>Buy the book</a>
                     <hr />
