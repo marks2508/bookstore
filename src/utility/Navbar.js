@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import Search from './search';
 import ProductGrid from './productGrid';
-import SearchBar from './SearchBar';
 import Auth from '../lib/Auth';
 
 const navbarStyle = {
@@ -77,7 +77,7 @@ class Navbar extends React.Component {
         <ul style={clearfix}>
           <a href="/"><img style={navbarLogoStyle}  src="../assets/Logo.png" /></a>
           <li><a href="#" onClick={this.showSearchBar}><i style={navbarIconStyle} className="material-icons">search</i></a></li>
-          {this.state.showSearch ? <ProductGrid /> : null}
+
           { Auth.isAuthenticated() && <li><Link to="/books/new" style={navbarIconStyle}>Add a book</Link></li>}
           { Auth.isAuthenticated() && <li><Link to="/nytimes" style={navbarAuthStyle}>NY Times Bestsellers</Link></li>}
           { !Auth.isAuthenticated() && <li><Link to="/login" style={navbarAuthStyle} className="standard-button">Login</Link></li>}
@@ -87,6 +87,7 @@ class Navbar extends React.Component {
           { Auth.isAuthenticated() && <a href="#" style={navbarAuthStyle} className="standard-button" onClick={this.logout}>Logout</a> }
         </ul>
         <hr style={navbarLine}/>
+        {this.state.showSearch ? <ProductGrid /> : null}
       </div>
     );
   }

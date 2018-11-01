@@ -65,7 +65,7 @@ const bookData = [{
   author: 'J.D Salinger',
   year: '1945',
   genre: 'Existenital philosophy',
-  isbn: '0241950430',
+  isbn: '0241950430'
 }];
 
 mongoose

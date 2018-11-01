@@ -13,6 +13,8 @@ const cardStyle = {
 
 const cardContent = {
   height: '10em',
+  marginLeft: 'auto',
+  marginRight: 'auto',
   fontFamily: 'Niramit'
 };
 
@@ -37,7 +39,7 @@ class BooksIndex extends React.Component {
               <div key={book.id} className="col s2">
                 <div className="card">
                   <div className="card-image" >
-                    <img src={`http://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`} style={cardStyle}/>
+                    <Link to={`/books/${book.id}`}><img src={`http://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`} style={cardStyle}/></Link>
                   </div>
                   <div className="card-content" style={cardContent}>
                     <h6>{book.title}</h6>
