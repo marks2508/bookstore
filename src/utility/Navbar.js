@@ -56,8 +56,6 @@ class Navbar extends React.Component {
 
   showSearchBar = e => {
     e.preventDefault();
-    console.log('search button clicked');
-    console.log('before: ', this.state);
     if (this.state.showSearch === false) {
       this.setState({
         showSearch: true
@@ -67,8 +65,6 @@ class Navbar extends React.Component {
         showSearch: false
       });
     }
-    console.log('after: ', this.state.showSearch);
-
   }
 
   render() {

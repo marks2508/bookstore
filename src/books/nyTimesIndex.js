@@ -1,10 +1,17 @@
 import React from 'react';
 import Axios from 'axios';
 
+const cardContent = {
+  height: '100%',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  fontFamily: 'Niramit'
+};
 
-const cardContentStyle = {
-  height: '290px',
-  width: 'auto'
+const cardStyle = {
+  width: '100%',
+  height: '294px',
+  padding: '2px'
 };
 
 
@@ -34,20 +41,20 @@ class NyTimesIndex extends React.Component {
         <h1>The top 20 New York Times Bestsellers</h1>
         <h3>as of {this.state.date}</h3>
         <div className="row">
-          {this.state.books.map(book => {
+          {this.state.books.map((book, i) => {
             return (
-              <div key={book.key} className="col s3">
+              <div key={i} className="col s3">
                 <div className="card">
-                  <div style={cardContentStyle} className="card-content">
+                  {book.isbns.map((isbn, i) => (
+                    <div key={i} className="card-image">
+                      <img src={`http://covers.openlibrary.org/b/isbn/${isbn.isbn10}-M.jpg`} style={cardStyle}/>
+                    </div>
+                  ))}
+                  <div className="card-content" style={cardContent}>
                     <br />
                     <p>{book.title}</p>
                     <hr />
                     <p>{book.author}</p>
-                    {book.isbns.map((isbn, i) => (
-                      <div key={i}>
-                        <img src={`http://covers.openlibrary.org/b/isbn/${isbn.isbn10}-M.jpg`}/>
-                      </div>
-                    ))}
                     <hr />
                     <a href={'https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=' + book.title}>Buy the book</a>
                     <hr />
