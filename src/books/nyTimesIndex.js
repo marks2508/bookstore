@@ -1,6 +1,11 @@
 import React from 'react';
 import Axios from 'axios';
 
+const cardStyle = {
+  height: 'auto',
+  width: '300px'
+};
+
 const cardContent = {
   height: '100%',
   marginLeft: 'auto',
@@ -8,10 +13,10 @@ const cardContent = {
   fontFamily: 'Niramit'
 };
 
-const cardStyle = {
+const cardImageStyle = {
   width: '100%',
-  height: '294px',
-  padding: '2px'
+  height: '100%',
+  padding: '20px'
 };
 
 
@@ -44,10 +49,10 @@ class NyTimesIndex extends React.Component {
           {this.state.books.map((book, i) => {
             return (
               <div key={i} className="col s3">
-                <div className="card">
+                <div className="card" style={cardStyle}>
                   {book.isbns.map((isbn, i) => (
                     <div key={i} className="card-image">
-                      <img src={`http://covers.openlibrary.org/b/isbn/${isbn.isbn10}-M.jpg`} style={cardStyle}/>
+                      <img src={`http://covers.openlibrary.org/b/isbn/${isbn.isbn10}-M.jpg`} style={cardImageStyle}/>
                     </div>
                   ))}
                   <div className="card-content" style={cardContent}>

@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 
 
 const cardStyle = {
+  width: '192px'
+};
+
+const imageStyle = {
   width: 'auto',
   maxHeight: '294px',
   height: '100%',
@@ -12,7 +16,7 @@ const cardStyle = {
 
 
 const cardContent = {
-  height: '10em',
+  height: '200px',
   marginLeft: 'auto',
   marginRight: 'auto',
   fontFamily: 'Niramit'
@@ -37,9 +41,9 @@ class BooksIndex extends React.Component {
           {this.state.books.map(book => {
             return (
               <div key={book.id} className="col s2">
-                <div className="card">
+                <div className="card" style={cardStyle}>
                   <div className="card-image" >
-                    <Link to={`/books/${book.id}`}><img src={`http://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`} style={cardStyle}/></Link>
+                    <Link to={`/books/${book.id}`}><img src={`http://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`} style={imageStyle}/></Link>
                   </div>
                   <div className="card-content" style={cardContent}>
                     <h6>{book.title}</h6>
