@@ -10,7 +10,7 @@ const cardContent = {
   height: '100%',
   marginLeft: 'auto',
   marginRight: 'auto',
-  fontFamily: 'Niramit'
+  fontFamily: 'Playfair Display'
 };
 
 const cardImageStyle = {
@@ -19,12 +19,51 @@ const cardImageStyle = {
   padding: '20px'
 };
 
+const listStyle = {
+  backgroundColor: '#f5f5f5',
+  clear: 'both',
+  content: '',
+  display: 'table',
+  listStyle: 'none',
+  padding: 0,
+  margin: 'auto auto 4em'
+};
+
+const bookPreview = {
+  width: '14em',
+  textAlign: 'center',
+  float: 'left',
+  padding: '0 1em',
+  position: 'relative',
+  zIndex: '1'
+};
+
+const previewSummary = {
+  paddingLeft: '15em',
+  position: 'relative',
+  height: 'auto',
+  display: 'block'
+};
+
+const imageStyle = {
+  height: 'auto'
+};
+
+const bookContainer = {
+  height: '300px',
+  width: '900px'
+};
+
+const titleText = {
+  fontFamily: 'Playfair Display'
+};
 
 class NyTimesIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       books: [],
+      details: [],
       date: new Date().toLocaleDateString()
     };
   }
@@ -43,33 +82,36 @@ class NyTimesIndex extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1>The top 20 New York Times Bestsellers</h1>
-        <h3>as of {this.state.date}</h3>
+      <div className="row">
+        <h5 style={titleText} className="col s12">The top 20 New York Times Bestsellers</h5>
+        <p style={titleText} className="col 12">as of {this.state.date}</p>
         <div className="row">
           {this.state.books.map((book, i) => {
             return (
-              <div key={i} className="col s3">
-                <div className="card" style={cardStyle}>
-                  {book.isbns.map((isbn, i) => (
-                    <div key={i} className="card-image">
-                      <img src={`http://covers.openlibrary.org/b/isbn/${isbn.isbn10}-M.jpg`} style={cardImageStyle}/>
-                    </div>
-                  ))}
-                  <div className="card-content" style={cardContent}>
-                    <br />
-                    <p>{book.title}</p>
-                    <hr />
-                    <p>{book.author}</p>
-                    <hr />
-                    <a href={'https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=' + book.title}>Buy the book</a>
-                    <hr />
-                    <p className="published">Published by: {book.publisher}</p>
+              <div key={i}>
+                {book.isbns.map((isbn, i) => (
+                  <div key={i} className="col s12">
+                    <ul style={listStyle}>
+                      <li>
+                        <div style={bookContainer}>
+                          <div style={bookPreview} className="book-preview">
+                            <img style={imageStyle} src={`http://covers.openlibrary.org/b/isbn/${isbn.isbn13}-M.jpg`}/>
+                          </div>
+                          <div style={previewSummary}>
+                            <p>{book.title}</p>
+                            <p>{book.author}</p>
+                            <p>{isbn.isbn10}</p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
                   </div>
-                </div>
+                ))}
               </div>
             );
           })}
         </div>
+      </div>
       </div>
     );
   }

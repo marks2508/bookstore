@@ -19,7 +19,7 @@ const cardContent = {
   height: '200px',
   marginLeft: 'auto',
   marginRight: 'auto',
-  fontFamily: 'Niramit'
+  fontFamily: 'Playfair Display'
 };
 
 class BooksIndex extends React.Component {
@@ -47,9 +47,8 @@ class BooksIndex extends React.Component {
                   </div>
                   <div className="card-content" style={cardContent}>
                     <h6>{book.title}</h6>
-                    <p>{book.author}</p>
                     <hr />
-                    <p>{book.genre}</p>
+                    <p>{book.author}</p>
                   </div>
                   <div className="card-action">
                     <Link to={`/books/${book.id}`}>Info on the book</Link>

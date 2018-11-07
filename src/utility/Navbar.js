@@ -12,25 +12,29 @@ const navbarStyle = {
 };
 const navbarLogoStyle = {
   textAlign: 'center',
+  fontFamily: 'Playfair Display',
+  fontSize: '15px',
   height: '100%',
   marginTop: '0',
   marginLeft: 'auto',
   marginRight: 'auto',
   display: 'block'
 };
-const navbarIconStyle = {
-  color: 'mediumblue',
-  marginTop: '-100px',
-  float: 'right',
-  padding: '40px'
-};
 const navbarAuthStyle = {
-  fontFamily: 'Niramit',
-  fontSize: '20px',
-  color: 'mediumblue',
-  marginTop: '-100px',
+  fontFamily: 'Playfair Display',
+  fontSize: '18px',
+  color: 'grey',
+  margin: '0px 35px 0px 35px',
+  float: 'right',
+  padding: '0px 10px 0px 10px'
+};
+const navbarLinksStyle = {
+  fontFamily: 'Playfair Display',
+  fontSize: '18px',
+  color: 'grey',
+  marginTop: '0px',
   float: 'left',
-  padding: '40px'
+  padding: '0px 35px 0px 35px'
 };
 
 const clearfix = {
@@ -72,14 +76,16 @@ class Navbar extends React.Component {
       <div style={navbarStyle}>
         <ul style={clearfix}>
           <a href="/"><img style={navbarLogoStyle}  src="../assets/Logo.png" /></a>
-          <li><a href="#" onClick={this.showSearchBar}><i style={navbarIconStyle} className="material-icons">search</i></a></li>
+          <li><a href="#" onClick={this.showSearchBar}><i style={navbarAuthStyle} className="material-icons"></i></a></li>
 
-          { Auth.isAuthenticated() && <li><Link to="/books/new" style={navbarIconStyle}>Add a book</Link></li>}
-          { Auth.isAuthenticated() && <li><Link to="/nytimes" style={navbarAuthStyle}>NY Times Bestsellers</Link></li>}
+          { Auth.isAuthenticated() && <li><Link to="/books/new" style={navbarLinksStyle}>Add a book</Link></li>}
+          { Auth.isAuthenticated() && <li><Link to="/nytimes" style={navbarLinksStyle}>NY Times Bestsellers</Link></li>}
+          { Auth.isAuthenticated() && <li><Link to="/" style={navbarLinksStyle} className="standard-button">Browse the collection</Link></li>}
           { !Auth.isAuthenticated() && <li><Link to="/login" style={navbarAuthStyle} className="standard-button">Login</Link></li>}
           {' '}
           { !Auth.isAuthenticated() && <li><Link to="/register" style={navbarAuthStyle} className="standard-button">Register</Link></li> }
           {' '}
+
           { Auth.isAuthenticated() && <a href="#" style={navbarAuthStyle} className="standard-button" onClick={this.logout}>Logout</a> }
         </ul>
         <hr style={navbarLine}/>

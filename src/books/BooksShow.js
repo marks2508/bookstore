@@ -8,6 +8,10 @@ const buttonStyles = {
   display: 'inline-block'
 };
 
+const detailStyle = {
+  fontFamily: 'Playfair Display'
+};
+
 class BooksShow extends React.Component {
   state = {
     book: {}
@@ -32,16 +36,16 @@ class BooksShow extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col s4">
+          <div className="col s6">
             <img src={`http://covers.openlibrary.org/b/isbn/${this.state.book.isbn}-L.jpg`} />
           </div>
           <div className="col s6">
-            <h1>{this.state.book.title}</h1>
-            <h2>{this.state.book.author}</h2>
-            <h3>{this.state.book.year}</h3>
-            <h4>{this.state.book.genre}</h4>
+            <h3 style={detailStyle}>{this.state.book.title}</h3>
+            <h5 style={detailStyle}>{this.state.book.author}</h5>
+            <p style={detailStyle}>{this.state.book.year}</p>
+            <p style={detailStyle}>{this.state.book.genre}</p>
             <Link to={`/books/${this.state.book.id}/edit`}>
-              <i className="material-icons">edit</i>
+              <i className="material-icons" style={buttonStyles}>edit</i>
             </Link>
             <BackButton history={this.props.history} />
             <a><i onClick={this.deleteBook} className="material-icons">delete_forever</i></a>
