@@ -79,9 +79,9 @@ class Navbar extends React.Component {
 
           { Auth.isAuthenticated() && <li><Link to="/about" style={navbarLinksStyle}>About </Link></li>}
           { Auth.isAuthenticated() && <li><Link to="/nytimes" style={navbarLinksStyle}>NY Times Bestsellers</Link></li>}
-          { Auth.isAuthenticated() && <li><Link to="/" style={navbarLinksStyle} className="standard-button">All users</Link></li>}
+          { Auth.isAuthenticated() && <li><Link to="/" style={navbarLinksStyle} className="standard-button">All books</Link></li>}
           { Auth.isAuthenticated() && <li><Link to="/" style={navbarAuthStyle} className="standard-button">My profile</Link></li>}
-          { Auth.isAuthenticated() && <li><Link to="/" style={navbarAuthStyle} className="standard-button">My library</Link></li>}
+          { Auth.isAuthenticated() && <li><Link to="/library" style={navbarAuthStyle} className="standard-button">My library</Link></li>}
           { !Auth.isAuthenticated() && <li><Link to="/login" style={navbarAuthStyle} className="standard-button">Login</Link></li>}
           {' '}
           { !Auth.isAuthenticated() && <li><Link to="/register" style={navbarAuthStyle} className="standard-button">Register</Link></li> }

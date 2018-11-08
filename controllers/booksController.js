@@ -1,4 +1,4 @@
-const Book = require('../model/book');
+const Book = require('../model/user');
 const NytBooks = require('../model/NytBooks');
 
 function getBooks(req, res) {
@@ -12,7 +12,7 @@ function getBooks(req, res) {
 function getNytBooks(req, res) {
   NytBooks
     .find()
-    .exec()    
+    .exec()
     .then(titles => res.status(200).json(titles))
     .catch(err => res.status(500).json(err));
 }

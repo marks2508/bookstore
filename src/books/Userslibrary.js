@@ -1,7 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import Auth from '../lib/Auth';
 
 const cardStyle = {
   width: '192px'
@@ -22,27 +22,26 @@ const cardContent = {
   fontFamily: 'Playfair Display'
 };
 
-class BooksIndex extends React.Component {
+class UsersLibrary extends React.Component {
   state = {
-    books: []
+    user: {
+      books: []
+    }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     Axios
-      .get('/api/books/')
-      .then(res => this.setState({books: res.data}))
+      .get(`/api/books/${Auth.getPayload().userId}`)
+      .then(res => this.setState({user: res.data}, () => console.log('State: ', this.state.user)))
       .catch(err => console.log(err));
   }
-
   render() {
     return (
       <div>
         <div className="row">
-          {this.state.books.map(book => {
+          {this.state.user.books.map((book) => {
             return (
-              <div key={book.id}>
-                {book.books.map((book, i) => (
-                  <div key={i} className="col s2">
+              <div key={book.id} className="col s2">
                     <div className="card" style={cardStyle}>
                       <div className="card-image" >
                         <Link to={`/books/${book.id}`}><img src={`http://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`} style={imageStyle}/></Link>
@@ -56,8 +55,7 @@ class BooksIndex extends React.Component {
                         <Link to={`/books/${book.id}`}>Info on the book</Link>
                       </div>
                     </div>
-                  </div>
-                ))}
+
               </div>
             );
           })}
@@ -67,4 +65,4 @@ class BooksIndex extends React.Component {
   }
 }
 
-export default BooksIndex;
+export default UsersLibrary;
