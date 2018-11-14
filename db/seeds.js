@@ -3,9 +3,10 @@ mongoose.Promise = require('bluebird');
 
 const { dbURI } = require('../config/environment');
 const User      = require('../model/user');
+const Book      = require('../model/user');
 
 User.collection.drop();
-
+Book.collection.drop();
 
 const bookData = [
   {
@@ -77,24 +78,21 @@ const userData = [{
   name: 'mark',
   email: 'm@m',
   password: 'm',
-  passwordConfirmation: 'm',
-  books: [bookData[1], bookData[2], bookData[3], bookData[4]]
-}, {
-  name: 'tom',
-  email: 't@t',
-  password: 't',
-  passwordConfirmation: 't',
-  books: [bookData[5]]
-}, {
-  name: 'john',
-  email: 'j@j',
-  password: 'j',
-  passwordConfirmation: 'j',
-  books: [bookData[6], bookData[7], bookData[8]]
+  passwordConfirmation: 'm'
+// }, {
+//   name: 'tom',
+//   email: 't@t',
+//   password: 't',
+//   passwordConfirmation: 't'
+// }, {
+//   name: 'john',
+//   email: 'j@j',
+//   password: 'j',
+//   passwordConfirmation: 'j'
 }];
 
 mongoose.connect(dbURI)
   .then(() => User.create(userData))
-  .then(users => console.log(`${users.length} users created!`))
+  .then(books => console.log(`${books.length} books created!`))
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());

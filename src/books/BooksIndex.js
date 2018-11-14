@@ -27,37 +27,35 @@ class BooksIndex extends React.Component {
     books: []
   }
 
-  componentWillMount() {
+  componentDidMount() {
     Axios
       .get('/api/books/')
       .then(res => this.setState({books: res.data}))
+      .then(console.log('try' ,this.state.books))
       .catch(err => console.log(err));
   }
 
   render() {
+    console.log('State: ', this.state.books);
     return (
       <div>
         <div className="row">
-          {this.state.books.map(book => {
+          {this.state.books.map((books, i) => {
             return (
-              <div key={book.id}>
-                {book.books.map((book, i) => (
-                  <div key={i} className="col s2">
-                    <div className="card" style={cardStyle}>
-                      <div className="card-image" >
-                        <Link to={`/books/${book.id}`}><img src={`http://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`} style={imageStyle}/></Link>
-                      </div>
-                      <div className="card-content" style={cardContent}>
-                        <h6>{book.title}</h6>
-                        <hr />
-                        <p>{book.author}</p>
-                      </div>
-                      <div className="card-action">
-                        <Link to={`/books/${book.id}`}>Info on the book</Link>
-                      </div>
-                    </div>
+              <div key={i} className="col s2">
+                <div className="card" style={cardStyle}>
+                  <div className="card-image" >
+                    <Link to={`/books/${books.id}`}><img src={`http://covers.openlibrary.org/b/isbn/${books.isbn}-L.jpg`} style={imageStyle}/></Link>
                   </div>
-                ))}
+                  <div className="card-content" style={cardContent}>
+                    <h6>{books.title}</h6>
+                    <hr />
+                    <p>{books.author}</p>
+                  </div>
+                  <div className="card-action">
+                    <Link to={`/books/${books._id}`}>Info on the book</Link>
+                  </div>
+                </div>
               </div>
             );
           })}

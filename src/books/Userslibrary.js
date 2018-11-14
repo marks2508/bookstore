@@ -39,12 +39,12 @@ class UsersLibrary extends React.Component {
     return (
       <div>
         <div className="row">
-          {this.state.user.books.map((book) => {
+          {this.state.user.books.map((book, i) => {
             return (
-              <div key={book.id} className="col s2">
+              <div key={i} className="col s2">
                     <div className="card" style={cardStyle}>
                       <div className="card-image" >
-                        <Link to={`/books/${book.id}`}><img src={`http://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`} style={imageStyle}/></Link>
+                        <Link to={`/books/${Auth.getPayload().userId}`}><img src={`http://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`} style={imageStyle}/></Link>
                       </div>
                       <div className="card-content" style={cardContent}>
                         <h6>{book.title}</h6>

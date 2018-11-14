@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
-
+import Auth from '../lib/Auth';
 import BackButton from '../utility/BackButton';
 
 const buttonStyles = {
@@ -86,10 +86,11 @@ class BooksShow extends React.Component {
     book: {}
   }
 
-  componentWillMount() {
+  componentDidMount() {
     Axios
-      .get(`/api/books/${this.props.match.params.id}`)
+      .get(`/api/books/${this.props.match.params.id}`, { headers: { 'Authorization': `Bearer ${Auth.getToken()}`}})
       .then(res => this.setState({ book: res.data }))
+      .then(console.log('data: ', this.state))
       .catch(err => console.log(err));
   }
 
@@ -101,6 +102,7 @@ class BooksShow extends React.Component {
   }
 
   render() {
+    console.log('State: ', this.state);
     return (
       <div className="container">
         <div className="row">

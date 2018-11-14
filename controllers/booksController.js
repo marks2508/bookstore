@@ -1,4 +1,5 @@
-const Book = require('../model/user');
+const Book = require('../model/book');
+const User = require('../model/user');
 const NytBooks = require('../model/NytBooks');
 
 function getBooks(req, res) {
