@@ -4,7 +4,7 @@ import ProductGrid from './productGrid';
 import Auth from '../lib/Auth';
 
 const navbarStyle = {
-  height: '375px',
+  height: '250px',
   float: 'none',
   textAlign: 'center',
   backgroundColor: 'white'
@@ -12,12 +12,11 @@ const navbarStyle = {
 const navbarLogoStyle = {
   textAlign: 'center',
   fontFamily: 'Playfair Display',
-  fontSize: '15px',
-  height: '20%',
+  fontSize: '10px',
+  height: '150px',
   marginTop: '0',
   marginLeft: 'auto',
-  marginRight: 'auto',
-  display: 'block'
+  marginRight: 'auto'
 };
 const navbarAuthStyle = {
   fontFamily: 'Playfair Display',
@@ -76,10 +75,9 @@ class Navbar extends React.Component {
         <ul style={clearfix}>
           <a href="/"><img style={navbarLogoStyle}  src="../assets/Logo.png" /></a>
           <li><a href="#" onClick={this.showSearchBar}><i style={navbarAuthStyle} className="material-icons"></i></a></li>
-
-          { Auth.isAuthenticated() && <li><Link to="/about" style={navbarLinksStyle}>About </Link></li>}
           { Auth.isAuthenticated() && <li><Link to="/nytimes" style={navbarLinksStyle}>NY Times Bestsellers</Link></li>}
           { Auth.isAuthenticated() && <li><Link to="/" style={navbarLinksStyle} className="standard-button">All books</Link></li>}
+          { Auth.isAuthenticated() && <li><Link to="/books" style={navbarLinksStyle} className="standard-button">Add a book</Link></li>}
           { Auth.isAuthenticated() && <li><Link to="/" style={navbarAuthStyle} className="standard-button">My profile</Link></li>}
           { Auth.isAuthenticated() && <li><Link to="/library" style={navbarAuthStyle} className="standard-button">My library</Link></li>}
           { !Auth.isAuthenticated() && <li><Link to="/login" style={navbarAuthStyle} className="standard-button">Login</Link></li>}

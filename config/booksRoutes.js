@@ -3,7 +3,9 @@ const books = require('../controllers/booksController');
 const auth = require('../controllers/authController');
 
 router.route('/books')
-  .get(books.index)
+  .get(books.index);
+
+router.route('/books/new')
   .post(books.create);
 
 router.route('/nytimes')
